@@ -31,7 +31,6 @@ include 'header.php';
 
 <h1>Welcome to the Forum</h1>
 
-<!--------------------------------- Module ------------------------------------->
 <div class="module-navigation">
     <h2>Modules</h2>
     <div class="modules-list">
@@ -44,7 +43,6 @@ include 'header.php';
     </div>
 </div>
 
-<!----------------------------------------- Posts ----------------------------------------------------->
 <div class="posts-header">
     <h2><?= $module_id ? "Posts in Module: " . htmlspecialchars($modules[array_search($module_id, array_column($modules, 'id'))]['name']) : "All Posts" ?></h2>
     <button class="view-toggle" onclick="toggleView(this)">
