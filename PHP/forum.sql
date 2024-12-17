@@ -101,16 +101,17 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `is_admin` BOOLEAN DEFAULT FALSE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `created_at`) VALUES
-(1, 'admin', '$2y$10$B.swhhjsVlAogLRku24iyOhEP0D6ywjValA3PSbaPdls/Nibk2DHa', 'admin@gmail.com', '2024-12-11 03:55:05'),
-(3, 'donquixote ', '$2y$10$B.swhhjsVlAogLRku24iyOhEP0D6ywjValA3PSbaPdls/Nibk2DHa', 'donquixote@gmail.com', '2024-12-11 03:04:29');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `created_at`, `is_admin`) VALUES
+(1, 'admin', '$2y$10$B.swhhjsVlAogLRku24iyOhEP0D6ywjValA3PSbaPdls/Nibk2DHa', 'admin@gmail.com', '2024-12-11 03:55:05', TRUE),
+(3, 'donquixote ', '$2y$10$B.swhhjsVlAogLRku24iyOhEP0D6ywjValA3PSbaPdls/Nibk2DHa', 'donquixote@gmail.com', '2024-12-11 03:04:29', FALSE);
 
 --
 -- Indexes for dumped tables
@@ -203,3 +204,5 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+UPDATE users SET is_admin = TRUE WHERE id = 1; -- Replace 1 with your admin user's ID

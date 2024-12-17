@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +11,7 @@
     <div class="container">
         <a href="index.php" class="logo">Forum</a>
         <nav class="nav-bar">
+            <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
             <?php if (isset($_SESSION['user_id'])): ?>
                 <a href="profile.php" class="nav-link">Profile</a>
                 <a href="create_module.php" class="nav-link">Create Module</a>
@@ -37,3 +38,19 @@
     </div>
 </header>
 <main>
+<script>
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
+// Set initial theme based on localStorage
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+});
+</script>
